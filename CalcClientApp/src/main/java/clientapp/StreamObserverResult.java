@@ -3,7 +3,7 @@ package clientapp;
 import calcstubs.Result;
 import io.grpc.stub.StreamObserver;
 
-public class SteamObserverResult implements StreamObserver<Result> {
+public class StreamObserverResult implements StreamObserver<Result> {
 
     private final int request;
     private boolean isCompleted=false;
@@ -12,7 +12,7 @@ public class SteamObserverResult implements StreamObserver<Result> {
     }
 
 
-    public SteamObserverResult(int request){
+    public StreamObserverResult(int request){
         this.request = request;
     }
 
