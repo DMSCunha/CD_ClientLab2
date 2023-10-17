@@ -1,11 +1,14 @@
 package clientapp;
 
 import calcstubs.*;
-import calcstubs.Number;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import io.grpc.stub.StreamObservers;
+
 import java.util.*;
+
+import static java.lang.Thread.sleep;
 
 
 public class Client {
@@ -43,11 +46,17 @@ public class Client {
                         System.out.println("add " + res.getId() + "= " + res.getRes());
                         break;
                     case 2: // calcular as potencias de x^y (receber por stream)
-
+                        SteamObserverResult response = new SteamObserverResult(1);
+                        noBlockStub.generatePowers(NumberAndMaxExponent.newBuilder()
+                                        .setId("numberrrrs")
+                                        .setBaseNumber(2)
+                                        .setMaxExponent(4)
+                                        .build(),response);
                         break;
                     case 3: //somar a sequencia dos numeros de x a y (enviar stream)
+
                         break;
-                    case 4: //sequencia de operacões de soma x + y
+                    case 4: //sequencia de operacões de soma x + y (receber e enviar por stream)
                         break;
                     case 99:
                         System.exit(0);
